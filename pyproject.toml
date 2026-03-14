@@ -1,0 +1,15 @@
+[project]
+name = "mimirio_sync"
+version = "0.0.1"
+description = "Syncs Frappe ToDo records with Microsoft To Do and exposes iCalendar feeds."
+authors = [
+    { name = "Mimirio", email = "hello@mimirio.com" }
+]
+dependencies = [
+    "requests",
+    "rauth"
+]
+
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"

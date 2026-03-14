@@ -1,0 +1,1 @@
+mimirio_sync.patches.v0_1.setup_microsoft_sso

@@ -1,0 +1,7 @@
+{
+  "name": "mimirio_sync",
+  "version": "0.0.1",
+  "description": "Syncs Frappe ToDo records with Microsoft To Do and exposes iCalendar feeds.",
+  "author": "Mimirio",
+  "license": "MIT"
+}

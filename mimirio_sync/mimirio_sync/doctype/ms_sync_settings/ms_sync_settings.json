@@ -1,0 +1,44 @@
+{
+  "name": "MS Sync Settings",
+  "doctype": "DocType",
+  "module": "Mimirio Sync",
+  "autoname": "format:MS-SYNC-{user}",
+  "fields": [
+    {
+      "fieldname": "user",
+      "fieldtype": "Link",
+      "label": "User",
+      "options": "User",
+      "unique": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "microsoft_list_id",
+      "fieldtype": "Data",
+      "label": "Microsoft List ID",
+      "read_only": 1
+    },
+    {
+      "fieldname": "calendar_sync_token",
+      "fieldtype": "Data",
+      "label": "Calendar Sync Token",
+      "read_only": 1,
+      "unique": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "All",
+      "read": 1,
+      "write": 1,
+      "if_owner": 1
+    }
+  ]
+}

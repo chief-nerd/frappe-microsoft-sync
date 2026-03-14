@@ -1,0 +1,13 @@
+[
+  {
+    "dt": "ToDo",
+    "fieldname": "microsoft_todo_id",
+    "fieldtype": "Data",
+    "label": "Microsoft To Do ID",
+    "insert_after": "status",
+    "read_only": 1,
+    "no_copy": 1,
+    "module": "Mimirio Sync",
+    "doctype": "Custom Field"
+  }
+]
