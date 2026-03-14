@@ -5,6 +5,7 @@ __version__ = "0.0.1"
 
 _oauth_patched = False
 
+
 def patch_oauth():
     global _oauth_patched
     if _oauth_patched:
@@ -12,6 +13,7 @@ def patch_oauth():
     _oauth_patched = True
 
     import frappe.utils.oauth
+
     original_get_info_via_oauth = frappe.utils.oauth.get_info_via_oauth
 
     def mimirio_get_info_via_oauth(provider, code, decoder=None, id_token=False):
@@ -39,8 +41,11 @@ def patch_oauth():
 
         if id_token:
             import jwt
+
             token = parsed_access["id_token"]
-            info = jwt.decode(token, flow.client_secret, options={"verify_signature": False})
+            info = jwt.decode(
+                token, flow.client_secret, options={"verify_signature": False}
+            )
         else:
             api_endpoint = oauth2_providers[provider].get("api_endpoint")
             api_endpoint_args = oauth2_providers[provider].get("api_endpoint_args")
@@ -53,7 +58,9 @@ def patch_oauth():
                 info["email"] = email_dict.get("email")
 
         if not (info.get("email_verified") or frappe.utils.oauth.get_email(info)):
-            frappe.throw(frappe._("Email not verified with {0}").format(provider.title()))
+            frappe.throw(
+                frappe._("Email not verified with {0}").format(provider.title())
+            )
 
         # Store refresh token for Microsoft providers
         if provider in ("office_365", "microsoft", "Microsoft") and refresh_token:
@@ -72,9 +79,14 @@ def patch_oauth():
     # Hook into login_oauth_user to persist the cached refresh token
     original_login_oauth_user = frappe.utils.oauth.login_oauth_user
 
-    def mimirio_login_oauth_user(data, *, provider=None, state=None, generate_login_token=False):
+    def mimirio_login_oauth_user(
+        data, *, provider=None, state=None, generate_login_token=False
+    ):
         res = original_login_oauth_user(
-            data, provider=provider, state=state, generate_login_token=generate_login_token
+            data,
+            provider=provider,
+            state=state,
+            generate_login_token=generate_login_token,
         )
 
         if provider in ("office_365", "microsoft", "Microsoft"):
@@ -84,9 +96,13 @@ def patch_oauth():
                 refresh_token = frappe.cache.get_value(f"ms_refresh_token:{email}")
                 if refresh_token:
                     from mimirio_sync.microsoft_graph import MicrosoftGraphClient
+
                     client = MicrosoftGraphClient(email)
                     set_encrypted_password(
-                        "MS Sync Settings", client.settings.name, refresh_token, "refresh_token"
+                        "MS Sync Settings",
+                        client.settings.name,
+                        refresh_token,
+                        "refresh_token",
                     )
                     frappe.cache.delete_value(f"ms_refresh_token:{email}")
 

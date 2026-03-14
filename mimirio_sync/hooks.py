@@ -9,7 +9,9 @@ except Exception:
 app_name = "mimirio_sync"
 app_title = "Mimirio Microsoft Sync"
 app_publisher = "Mimirio"
-app_description = "Syncs Frappe ToDo records with Microsoft To Do and exposes iCalendar feeds."
+app_description = (
+    "Syncs Frappe ToDo records with Microsoft To Do and exposes iCalendar feeds."
+)
 app_email = "hello@mimirio.com"
 app_license = "mit"
 
@@ -17,7 +19,7 @@ app_license = "mit"
 doc_events = {
     "ToDo": {
         "on_update": "mimirio_sync.sync.sync_todo_to_microsoft",
-        "on_trash": "mimirio_sync.sync.delete_todo_from_microsoft"
+        "on_trash": "mimirio_sync.sync.delete_todo_from_microsoft",
     }
 }
 

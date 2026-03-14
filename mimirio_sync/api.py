@@ -29,6 +29,7 @@ def get_calendar_feed(token):
         frappe.throw(_("Invalid token"), frappe.PermissionError)
 
     from frappe.utils import add_months, nowdate
+
     start_filter = add_months(nowdate(), -1)
     end_filter = add_months(nowdate(), 12)
 
@@ -92,6 +93,7 @@ def generate_calendar_token(user):
     """Generate and persist a calendar feed token for a user."""
     token = secrets.token_urlsafe(32)
     from mimirio_sync.microsoft_graph import MicrosoftGraphClient
+
     client = MicrosoftGraphClient(user)
     client.settings.calendar_sync_token = token
     client.settings.save(ignore_permissions=True)
