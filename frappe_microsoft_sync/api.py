@@ -160,7 +160,7 @@ def get_contact_feed(token):
 def generate_calendar_token(user):
     """Generate and persist a calendar feed token for a user."""
     token = secrets.token_urlsafe(32)
-    from mimirio_sync.microsoft_graph import MicrosoftGraphClient
+    from frappe_microsoft_sync.microsoft_graph import MicrosoftGraphClient
 
     client = MicrosoftGraphClient(user)
     client.settings.calendar_sync_token = token

@@ -1,4 +1,4 @@
-# Mimirio Microsoft Sync
+# Frappe Microsoft Sync
 
 Frappe v15 app that provides bidirectional synchronization between ERPNext/Frappe and Microsoft 365:
 
@@ -24,7 +24,7 @@ Refresh tokens are captured automatically during Microsoft SSO login via Entra I
 ```bash
 # From your bench directory:
 bench get-app https://github.com/chief-nerd/frappe-microsoft-sync.git
-bench --site YOUR_SITE install-app mimirio_sync
+bench --site YOUR_SITE install-app frappe_microsoft_sync
 bench --site YOUR_SITE migrate
 ```
 
@@ -44,7 +44,7 @@ Rebuild the image and update:
 ```bash
 docker compose build
 docker compose up -d
-docker compose exec backend bench --site YOUR_SITE install-app mimirio_sync
+docker compose exec backend bench --site YOUR_SITE install-app frappe_microsoft_sync
 docker compose exec backend bench --site YOUR_SITE migrate
 ```
 
@@ -53,7 +53,7 @@ docker compose exec backend bench --site YOUR_SITE migrate
 ### Standard Bench
 
 ```bash
-bench update --apps mimirio_sync
+bench update --apps frappe_microsoft_sync
 bench --site YOUR_SITE migrate
 ```
 
@@ -80,7 +80,7 @@ docker compose exec backend bench --site YOUR_SITE migrate
 
 4. **iCalendar feed** — Generate a token for a user, then subscribe from any calendar app:
    ```
-   https://YOUR_SITE/api/method/mimirio_sync.api.get_calendar_feed?token=TOKEN
+   https://YOUR_SITE/api/method/frappe_microsoft_sync.api.get_calendar_feed?token=TOKEN
    ```
 
 ## How It Works

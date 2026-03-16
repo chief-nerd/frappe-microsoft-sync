@@ -95,7 +95,7 @@ def patch_oauth():
                 email = email.lower()
                 refresh_token = frappe.cache().get_value(f"ms_refresh_token:{email}")
                 if refresh_token:
-                    from mimirio_sync.microsoft_graph import MicrosoftGraphClient
+                    from frappe_microsoft_sync.microsoft_graph import MicrosoftGraphClient
 
                     client = MicrosoftGraphClient(email)
                     set_encrypted_password(

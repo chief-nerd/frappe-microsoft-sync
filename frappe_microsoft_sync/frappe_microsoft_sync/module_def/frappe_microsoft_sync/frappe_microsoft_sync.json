@@ -1,0 +1,6 @@
+{
+ "app_name": "frappe_microsoft_sync",
+ "doctype": "Module Def",
+ "module_name": "Frappe Microsoft Sync",
+ "name": "Frappe Microsoft Sync"
+}

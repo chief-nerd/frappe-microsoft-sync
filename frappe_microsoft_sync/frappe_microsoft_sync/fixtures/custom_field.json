@@ -7,7 +7,7 @@
     "insert_after": "status",
     "read_only": 1,
     "no_copy": 1,
-    "module": "Mimirio Sync",
+    "module": "Frappe Microsoft Sync",
     "doctype": "Custom Field"
   },
   {
@@ -18,7 +18,7 @@
     "insert_after": "email_id",
     "read_only": 1,
     "no_copy": 1,
-    "module": "Mimirio Sync",
+    "module": "Frappe Microsoft Sync",
     "doctype": "Custom Field"
   },
   {
@@ -29,7 +29,7 @@
     "insert_after": "status",
     "read_only": 1,
     "no_copy": 1,
-    "module": "Mimirio Sync",
+    "module": "Frappe Microsoft Sync",
     "doctype": "Custom Field"
   }
 ]

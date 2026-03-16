@@ -1,5 +1,5 @@
 import frappe
-from mimirio_sync.microsoft_graph import MicrosoftGraphClient
+from frappe_microsoft_sync.microsoft_graph import MicrosoftGraphClient
 
 
 def sync_todo_to_microsoft(doc, method=None):
@@ -14,7 +14,7 @@ def sync_todo_to_microsoft(doc, method=None):
         return
 
     frappe.enqueue(
-        "mimirio_sync.sync.enqueue_sync_todo",
+        "frappe_microsoft_sync.sync.enqueue_sync_todo",
         user=doc.owner,
         todo_name=doc.name,
         now=frappe.flags.in_test,
@@ -34,7 +34,7 @@ def delete_todo_from_microsoft(doc, method=None):
 
     # Enqueue the delete task
     frappe.enqueue(
-        "mimirio_sync.sync.enqueue_delete_todo",
+        "frappe_microsoft_sync.sync.enqueue_delete_todo",
         user=doc.owner,
         microsoft_todo_id=doc.microsoft_todo_id,
         now=frappe.flags.in_test,
@@ -67,7 +67,7 @@ def sync_contact_to_microsoft(doc, method=None):
         return
 
     frappe.enqueue(
-        "mimirio_sync.sync.enqueue_sync_contact",
+        "frappe_microsoft_sync.sync.enqueue_sync_contact",
         user=doc.owner,
         contact_name=doc.name,
         now=frappe.flags.in_test,
@@ -86,7 +86,7 @@ def delete_contact_from_microsoft(doc, method=None):
         return
 
     frappe.enqueue(
-        "mimirio_sync.sync.enqueue_delete_contact",
+        "frappe_microsoft_sync.sync.enqueue_delete_contact",
         user=doc.owner,
         microsoft_contact_id=doc.microsoft_contact_id,
         now=frappe.flags.in_test,
@@ -119,7 +119,7 @@ def sync_event_to_microsoft(doc, method=None):
         return
 
     frappe.enqueue(
-        "mimirio_sync.sync.enqueue_sync_event",
+        "frappe_microsoft_sync.sync.enqueue_sync_event",
         user=doc.owner,
         event_name=doc.name,
         now=frappe.flags.in_test,
@@ -138,7 +138,7 @@ def delete_event_from_microsoft(doc, method=None):
         return
 
     frappe.enqueue(
-        "mimirio_sync.sync.enqueue_delete_event",
+        "frappe_microsoft_sync.sync.enqueue_delete_event",
         user=doc.owner,
         microsoft_event_id=doc.microsoft_event_id,
         now=frappe.flags.in_test,
@@ -171,7 +171,7 @@ def pull_from_microsoft():
         # Check if it's time to pull
         if not s.last_pull_datetime or add_minutes(s.last_pull_datetime, s.pull_sync_interval) <= now_datetime():
             frappe.enqueue(
-                "mimirio_sync.sync.pull_for_user",
+                "frappe_microsoft_sync.sync.pull_for_user",
                 user=s.user,
                 now=frappe.flags.in_test
             )
