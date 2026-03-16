@@ -1,10 +1,4 @@
 from . import __version__ as app_version
-from mimirio_sync import patch_oauth
-
-try:
-    patch_oauth()
-except Exception:
-    pass
 
 app_name = "mimirio_sync"
 app_title = "Mimirio Microsoft Sync"
@@ -14,6 +8,10 @@ app_description = (
 )
 app_email = "hello@mimirio.com"
 app_license = "mit"
+
+before_request = [
+    "mimirio_sync.patch_oauth",
+]
 
 # Contact hooks for Microsoft Contact synchronization
 doc_events = {

@@ -4,9 +4,6 @@ from frappe.utils.password import set_encrypted_password
 __version__ = "0.0.1"
 
 _oauth_patched = False
-import frappe
-if not hasattr(frappe.flags, "in_microsoft_sync"):
-    frappe.flags.in_microsoft_sync = False
 
 
 def patch_oauth():
