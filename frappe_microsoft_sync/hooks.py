@@ -1,7 +1,6 @@
-from . import __version__ as app_version
-
 app_name = "frappe_microsoft_sync"
 app_title = "Frappe Microsoft Sync"
+app_version = "0.0.1"
 app_publisher = "Mimirio"
 app_description = (
     "Syncs Frappe ToDo records with Microsoft To Do and exposes iCalendar feeds."

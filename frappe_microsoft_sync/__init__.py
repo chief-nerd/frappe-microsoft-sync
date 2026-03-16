@@ -1,6 +1,3 @@
-import frappe
-from frappe.utils.password import set_encrypted_password
-
 __version__ = "0.0.1"
 
 _oauth_patched = False
@@ -12,6 +9,7 @@ def patch_oauth():
         return
     _oauth_patched = True
 
+    import frappe
     import frappe.utils.oauth
 
     original_get_info_via_oauth = frappe.utils.oauth.get_info_via_oauth
@@ -95,6 +93,7 @@ def patch_oauth():
                 email = email.lower()
                 refresh_token = frappe.cache().get_value(f"ms_refresh_token:{email}")
                 if refresh_token:
+                    from frappe.utils.password import set_encrypted_password
                     from frappe_microsoft_sync.microsoft_graph import MicrosoftGraphClient
 
                     client = MicrosoftGraphClient(email)
