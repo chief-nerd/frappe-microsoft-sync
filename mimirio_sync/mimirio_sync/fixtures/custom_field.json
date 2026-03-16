@@ -9,5 +9,27 @@
     "no_copy": 1,
     "module": "Mimirio Sync",
     "doctype": "Custom Field"
+  },
+  {
+    "dt": "Contact",
+    "fieldname": "microsoft_contact_id",
+    "fieldtype": "Data",
+    "label": "Microsoft Contact ID",
+    "insert_after": "email_id",
+    "read_only": 1,
+    "no_copy": 1,
+    "module": "Mimirio Sync",
+    "doctype": "Custom Field"
+  },
+  {
+    "dt": "Event",
+    "fieldname": "microsoft_event_id",
+    "fieldtype": "Data",
+    "label": "Microsoft Event ID",
+    "insert_after": "status",
+    "read_only": 1,
+    "no_copy": 1,
+    "module": "Mimirio Sync",
+    "doctype": "Custom Field"
   }
 ]

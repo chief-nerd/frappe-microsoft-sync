@@ -4,6 +4,9 @@ from frappe.utils.password import set_encrypted_password
 __version__ = "0.0.1"
 
 _oauth_patched = False
+import frappe
+if not hasattr(frappe.flags, "in_microsoft_sync"):
+    frappe.flags.in_microsoft_sync = False
 
 
 def patch_oauth():
@@ -66,7 +69,7 @@ def patch_oauth():
         if provider in ("office_365", "microsoft", "Microsoft") and refresh_token:
             email = frappe.utils.oauth.get_email(info)
             if email:
-                frappe.cache.set_value(
+                frappe.cache().set_value(
                     f"ms_refresh_token:{email.lower()}",
                     refresh_token,
                     expires_in_sec=600,
@@ -93,7 +96,7 @@ def patch_oauth():
             email = frappe.utils.oauth.get_email(data)
             if email:
                 email = email.lower()
-                refresh_token = frappe.cache.get_value(f"ms_refresh_token:{email}")
+                refresh_token = frappe.cache().get_value(f"ms_refresh_token:{email}")
                 if refresh_token:
                     from mimirio_sync.microsoft_graph import MicrosoftGraphClient
 
@@ -104,7 +107,7 @@ def patch_oauth():
                         refresh_token,
                         "refresh_token",
                     )
-                    frappe.cache.delete_value(f"ms_refresh_token:{email}")
+                    frappe.cache().delete_value(f"ms_refresh_token:{email}")
 
         return res
 

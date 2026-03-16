@@ -24,6 +24,48 @@
       "label": "Calendar Sync Token",
       "read_only": 1,
       "unique": 1
+    },
+    {
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "label": "Enabled",
+      "default": "1"
+    },
+    {
+      "fieldname": "pull_sync_interval",
+      "fieldtype": "Int",
+      "label": "Pull Sync Interval (Minutes)",
+      "description": "How often to pull changes from Microsoft (0 = manual only)",
+      "default": "60"
+    },
+    {
+      "fieldname": "last_pull_datetime",
+      "fieldtype": "Datetime",
+      "label": "Last Pull Datetime",
+      "read_only": 1
+    },
+    {
+      "fieldname": "section_break_sync_types",
+      "fieldtype": "Section Break",
+      "label": "Sync Features"
+    },
+    {
+      "fieldname": "sync_todos",
+      "fieldtype": "Check",
+      "label": "Sync To-Dos",
+      "default": "1"
+    },
+    {
+      "fieldname": "sync_contacts",
+      "fieldtype": "Check",
+      "label": "Sync Contacts",
+      "default": "1"
+    },
+    {
+      "fieldname": "sync_events",
+      "fieldtype": "Check",
+      "label": "Sync Events",
+      "default": "1"
     }
   ],
   "permissions": [
